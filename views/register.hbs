@@ -1,9 +1,13 @@
-<form id="auth">
+<form id="registration">
   <div class="container">
-    <h1>Вход</h1>
-    <p>Войти в свой аккаунт</p>
+    <h1>Регистрация</h1>
+    <p>Зарегистрируйтесь для входа</p>
     <hr>
     <div class="input-wrapper">
+      <div class="input">
+        <label for="title-input" class="block mar-b-1 title-input">Имя:</label>
+        <input id="title-input" name="name" type="text" tabindex="1" class="block w-100 ">
+      </div>
       <div class="input">
         <label for="title-input" class="block mar-b-1">Email:</label>
         <input id="title-input" name="mail" type="text" tabindex="2" class="block w-100 ">
@@ -19,8 +23,7 @@
     <br>
 
     <div>
-      <p>У вас нет ещё аккаунта? <a href="/register">Зарегистироваться</a></p>
+      <p>Уже есть аккаунт? <a href="/auth">Войти</a></p>
     </div>
   </div>
 </form>
-

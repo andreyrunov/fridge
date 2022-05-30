@@ -4,8 +4,9 @@ const express = require('express');
 const morgan = require('morgan');
 const hbs = require('hbs');
 const path = require('path');
-const authRouter = require('./routes/authRouter');
 const indexRouter = require('./routes/indexRouter');
+const authRouter = require('./routes/authRouter');
+const registerRouter = require('./routes/registerRouter');
 
 const PORT = process.env.PORT ?? 3000;
 
@@ -20,7 +21,7 @@ app.use(express.json());
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-
+app.use('/register', registerRouter);
 
 app.listen(PORT, () => {
   console.log('Server start on port', PORT);

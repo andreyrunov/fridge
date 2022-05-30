@@ -1,1 +1,29 @@
-<h1>Navbar</h1>
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">GOOD NEWS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/catalog">Все статьи</a>
+        </li>
+      </ul>
+      {{!-- {{#if user}}
+      <form method="get" action="/profile">
+        <button class="btn btn-outline-success" type="click">Привет, {{user.name}}!</button>
+      </form>
+      <form id="out">
+        <button type='submit' class="btn" style="margin: 0px 3px">Выход</button>
+      </form>
+
+      {{else}}
+      <form id="register" action="/register" method="get">
+        <button class="btn btn-outline-success" type="click">Зарегистрироваться</button>
+      </form>
+      {{/if}} --}}
+    </div>
+  </div>
+</nav>

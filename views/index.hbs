@@ -4,32 +4,41 @@
     <div class="categories-wrapper">
       <nav class="nav flex-column width200">
         <!-- <a class="nav-link active" aria-current="page" href="/catalog">Важное в мире</a> -->
-        <div class="input-wrapper">
-          <div class="input">
-            <label for="title-input" class="block mar-b-1 title-input mt-3">Название</label>
-            <input id="title-input" name="name" type="text" tabindex="1" class="block w-100 ">
+        <form action="/addItem" name="addForm">
+          <div class="input-wrapper">
+            <div class="input">
+              <label for="title-input" class="block mar-b-1 title-input mt-3">Название</label>
+              <input id="title-input" name="name" type="text" tabindex="1" class="block w-100 ">
+            </div>
+            <div class="input">
+              <label for="title-input" class="block mar-b-1 mt-3">Фото (url)</label>
+              <input id="title-input" name="photo" type="text" tabindex="2" class="block w-100 ">
+            </div>
           </div>
-          <div class="input">
-            <label for="title-input" class="block mar-b-1 mt-3">Фото</label>
-            <input id="title-input" name="mail" type="text" tabindex="2" class="block w-100 ">
-          </div>
-        </div>
-        <a href="#" id="2" class="btn btn-primary mt-4">Добавить</a>
+          <button type="submit" id="add" class="btn btn-primary mt-4">Добавить</button>
+        </form>
       </nav>
     </div>
   </div>
   <div class="item-list">
     <div class="items-list-wrapper">
-      <div class="card mt-5" id="1" style="width: 18rem;">
-        <img src="https://ecoland.kg/wp-content/uploads/2020/05/686de3a9-c883-11e9-8859-d5b49e03d8cb_IMG_4245.jpeg" class="card-img-top" alt="">
-        <div class="card-body">
-          <h5 class="card-title">Название товара</h5>
-          <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-                </p>-->
-          <a href="#" id="2"
-            class="btn btn-primary btn-to-get-by-class">Удалить</a>
+      {{#each allItems}}
+        <div class="card mt-4" id="{{this.id}}" data-id="{{this.id}}" style="width: 18rem;">
+          <div class="img-wrapper">
+            <img src="{{this.img}}" class="card-img-top" alt="">
+          </div>
+          <div class="card-body">
+            <div class="title-wrapper">
+              <h5 class="card-title">{{this.name}}</h5>
+            </div>
+            <div class="form-wrapper">
+              <form action="/delete/{{this.id}}">
+                <button type="button" id="{{this.id}}" class="btn btn-primary btn-to-get-by-class">Удалить</button>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
+      {{/each}}
     </div>
   </div>
 </div>

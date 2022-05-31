@@ -1,12 +1,12 @@
 const addBtn = document.getElementById('add');
+const register = document.getElementById('reg');
 /* const itemList = document.querySelector('.item-list');
 console.log(itemList); */
 const btnId = document.querySelector('.items-list-wrapper');
-console.log(btnId);
 
 const { addForm } = document.forms;
 
-addBtn.addEventListener('click', async (event) => {
+addBtn?.addEventListener('click', async (event) => {
   event.preventDefault();
   if (event.target.id === 'add') {
     const formData = Object.fromEntries(new FormData(addForm));
@@ -53,7 +53,7 @@ addBtn.addEventListener('click', async (event) => {
                           <div class="modal-body">
                             <div>
                               <div>
-                                <form class="editForm-{{this.id}}" method="post">
+                                <form class="editForm-${item.id}" method="post">
                                   <input class="changeInput" type="text" name="name"
                                     placeholder="Название товара">
                                   <input class="changeInput" type="text" name="photo"  placeholder="Фото (url)"><br>
@@ -83,10 +83,7 @@ addBtn.addEventListener('click', async (event) => {
   }
 });
 
-// console.log('------>', itemList);
-
-/* /* document.querySelector('form').addEventListener('submit', async (e) => { */
-btnId.addEventListener('click', async (e) => {
+btnId?.addEventListener('click', async (e) => {
   e.preventDefault();
   console.log(e.target.tagName);
   if (e.target.tagName === 'BUTTON' && e.target.innerText === 'Удалить') {
@@ -104,8 +101,12 @@ btnId.addEventListener('click', async (e) => {
     }
   } else if (e.target.id === 'saveChanges') {
     const attr = e.target.getAttribute('data-id');
+    console.log('&&&&&&&&&&&&&', attr);
+
     const editForm = document.querySelector(`.editForm-${attr}`);
+    console.log('&&&&&&&&&&&&&', editForm);
     const formNewData = Object.fromEntries(new FormData(editForm));
+    console.log(formNewData);
     const response = await fetch(`/admin/update/${attr}`, {
       method: 'PUT',
       headers: {
@@ -117,101 +118,50 @@ btnId.addEventListener('click', async (e) => {
       window.location.replace('/admin');
     }
   }
-  // btnId.forEach(async (el) => {
-  //   if (el.id === e.target.id) {
-  //     const response = await fetch(`/admin/delete/${e.target.id}`, {
-  //       method: 'DELETE',
-  //     });
-
-  //     // console.log('===========>', response);
-  //     if (response.ok) {
-  //     // const card = e.target.closest('[data-id]');
-  //       const card = document.getElementById(`card-${e.target.id}`);
-  //       // console.log('#################>', card);
-  //       card.remove();
-  //     }
-  //   }
-  // });
-
-  /* const attr = e.target.getAttribute('data-id');
-  console.log('============>', e.target.id);
-  // console.log('============>', e.target);
-  // console.log('============>', e.target.type);
-  // console.log('===========>', card);
-  console.log('#################>', attr);
-  // console.log('=================>', e.target.id);
-  if (attr === e.target.id) {
-    const response = await fetch(`/admin/delete/${e.target.id}`, {
-      method: 'DELETE',
-    });
-
-    // console.log('===========>', response);
-    if (response.ok) {
-      // const card = e.target.closest('[data-id]');
-      const card = document.getElementById(`card-${e.target.id}`);
-      // console.log('#################>', card);
-      card.remove();
-    }
-  } */
 });
-/*   if (e.target.id === 'saveChanges') {
-    console.log('===========>', e.target);
-    e.preventDefault(); */
-/* const attr = e.target.getAttribute('data-id');
-    console.log('++++++++++++++++>', attr);
-    const { editForm } = document.forms;
-    console.log('&&&&&&&&&&&&&&&>', editForm);
-    const formNewData = Object.fromEntries(new FormData(editForm));
-    console.log('&&&&&&&&&&&&&&&>', formNewData);
-    // const getId = document.getElementById
-    const response = await fetch(`/admin/update/${attr}`, {
-      method: 'PUT',
+
+register?.addEventListener('click', async (event) => {
+  event.preventDefault();
+  console.log(event.target);
+  const { regist } = document.forms;
+  const formNewData = Object.fromEntries(new FormData(regist));
+  console.log('--------->>>', formNewData);
+  console.log('==============>>>', regist);
+
+  if (formNewData.name === '' || formNewData.login === '' || formNewData.pass === '') {
+    alert('Заполните все поля формы!');
+  } else {
+    const response = await fetch('/register/addNewUser', {
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ formNewData }),
-    }); */
-
-/* if (response.ok) {
-      console.log('---------->>> OK');
-    } */
-// }
-
-// });
-// }); */
-
-/* const userId = 1;
-const changeBtn = document.getElementById(`editormodal${userId}`);
-console.log('#################>', changeBtn);
-changeBtn.addEventListener('click', async (elem) => {
-  elem.preventDefault();
-  if (elem.target) {
-    console.log(elem.target);
+      body: JSON.stringify(formNewData),
+    });
+  
+    if (response.status === 200) {
+      window.location.replace('/registerSuccess');
+    } else if (response.status === 201) {
+      alert('Пользователь с таким e-mail уже существует!');
+      window.location.replace('/register');
+    }
   }
 });
- */
 
-/* const myModal = document.getElementById('myModal')
-const myInput = document.getElementById('myInput')
+/* if (register) {
+  register.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = Object.fromEntries(new FormData(register));
+    const response = await fetch('/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
 
-myModal.addEventListener('shown.bs.modal', () => {
-  myInput.focus()
-})
- */
-
-/* const exampleModal = document.getElementById('exampleModal');
-exampleModal.addEventListener('show.bs.modal', (event) => {
-  // Button that triggered the modal
-  const button = event.relatedTarget;
-  // Extract info from data-bs-* attributes
-  const recipient = button.getAttribute('data-bs-whatever');
-  // If necessary, you could initiate an AJAX request here
-  // and then do the updating in a callback.
-  //
-  // Update the modal's content.
-  const modalTitle = exampleModal.querySelector('.modal-title');
-  const modalBodyInput = exampleModal.querySelector('.modal-body input');
-
-  modalTitle.textContent = `New message to ${recipient}`;
-  modalBodyInput.value = recipient;
-}); */
+    if (response.ok) {
+      window.location.href = '/';
+    }
+  });
+} */

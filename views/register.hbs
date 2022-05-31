@@ -1,29 +1,30 @@
-<form id="registration">
-  <div class="container">
-    <h1>Регистрация</h1>
-    <p>Зарегистрируйтесь для входа</p>
-    <hr>
+<div class="container">
+  <h1>Регистрация</h1>
+  <p>Зарегистрируйтесь для входа</p>
+  <hr>
+  <form name="regist" id="register" method="post">
     <div class="input-wrapper">
       <div class="input">
-        <label for="title-input" class="block mar-b-1 title-input">Имя:</label>
-        <input id="title-input" name="name" type="text" tabindex="1" class="block w-100 ">
+        <label for="title-input-name" class="block mar-b-1 title-input">Имя:</label>
+        <input id="title-input-name" required name="name" type="text" tabindex="1" class="block w-100 ">
       </div>
       <div class="input">
-        <label for="title-input" class="block mar-b-1">Email:</label>
-        <input id="title-input" name="mail" type="text" tabindex="2" class="block w-100 ">
+        <label for="title-input-mail" class="block mar-b-1">Email:</label>
+        <input id="title-input-mail" required name="login" type="text" tabindex="2" class="block w-100 ">
       </div>
       <div class="input">
-        <label for="title-input" class="block mar-b-1">Password:</label>
-        <input id="title-input" name="pass" type="password" tabindex="3" class="block w-100 ">
+        <label for="title-input-pass" class="block mar-b-1">Password:</label>
+        <input id="title-input-pass" required name="pass" type="password" tabindex="3" class="block w-100 ">
       </div>
     </div>
-    <button type="submit" class="btn btn-primary mt-3" style="width: 120px;" id="">
-      <bold>Войти</bold>
-    </button>
-    <br>
+      <button type="submit" class="btn btn-primary mt-3" style="width: 200px;" id="reg">
+        <bold>Зарегистрироваться</bold>
+      </button>
+  </form>
+  <br>
 
-    <div>
-      <p>Уже есть аккаунт? <a href="/auth">Войти</a></p>
-    </div>
+  <div>
+    <p>Уже есть аккаунт? <a href="/auth">Войти</a></p>
   </div>
-</form>
+</div>
+

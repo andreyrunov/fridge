@@ -1,19 +1,26 @@
 require('dotenv').config();
 const router = require('express').Router();
 const { Item } = require('../db/models');
-
-const userId = 1;
+const checkAuth = require('../middlewares/checkAuth');
 
 router.route('/')
-  .get(async (req, res) => {
-    const allItems = await Item.findAll({ where: { user_id: userId }, raw: true });
-    // console.log(allItems);
+  .get(checkAuth, async (req, res) => {
+    if (req.session.isAdmin) {
+      const { userId } = req.session;
+      const { userName } = req.session;
+      const { isAdmin } = req.session;
 
-    res.render('admin', { allItems });
+      const allItems = await Item.findAll({ where: { user_id: userId }, raw: true });
+      // console.log(allItems);
+      res.render('admin', { allItems, userName, isAdmin });
+    } else {
+      res.redirect('/');
+    }
   });
 
 router.route('/addItem')
   .post(async (req, res) => {
+    const { userId } = req.session;
     const {
       name, photo,
     } = req.body;

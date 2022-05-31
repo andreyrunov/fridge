@@ -1,15 +1,17 @@
 require('dotenv').config();
 const router = require('express').Router();
 const { Item } = require('../db/models');
-
-const userId = 1;
+const checkAuth = require('../middlewares/checkAuth');
 
 router.route('/')
-  .get(async (req, res) => {
+  .get(checkAuth, async (req, res) => {
+    const { userId } = req.session;
+    const { userName } = req.session;
+    const { isAdmin } = req.session;
     const allItems = await Item.findAll({ where: { user_id: userId }, raw: true });
     // console.log(allItems);
 
-    res.render('index', { allItems });
+    res.render('index', { allItems, userName, isAdmin });
   });
 
 module.exports = router;

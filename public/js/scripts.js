@@ -1,5 +1,6 @@
 const addBtn = document.getElementById('add');
 const register = document.getElementById('reg');
+const auth = document.getElementById('auth');
 /* const itemList = document.querySelector('.item-list');
 console.log(itemList); */
 const btnId = document.querySelector('.items-list-wrapper');
@@ -122,11 +123,11 @@ btnId?.addEventListener('click', async (e) => {
 
 register?.addEventListener('click', async (event) => {
   event.preventDefault();
-  console.log(event.target);
+  // console.log(event.target);
   const { regist } = document.forms;
   const formNewData = Object.fromEntries(new FormData(regist));
-  console.log('--------->>>', formNewData);
-  console.log('==============>>>', regist);
+  // console.log('--------->>>', formNewData);
+  // console.log('==============>>>', regist);
 
   if (formNewData.name === '' || formNewData.login === '' || formNewData.pass === '') {
     alert('Заполните все поля формы!');
@@ -138,12 +139,38 @@ register?.addEventListener('click', async (event) => {
       },
       body: JSON.stringify(formNewData),
     });
-  
+
     if (response.status === 200) {
       window.location.replace('/registerSuccess');
     } else if (response.status === 201) {
       alert('Пользователь с таким e-mail уже существует!');
-      window.location.replace('/register');
+      window.location.replace('/auth');
+    }
+  }
+});
+
+auth?.addEventListener('click', async (event) => {
+  event.preventDefault();
+  // console.log(event.target);
+  const { authorisation } = document.forms;
+  const formNewData = Object.fromEntries(new FormData(authorisation));
+
+  if (formNewData.login === '' || formNewData.pass === '') {
+    alert('Заполните все поля формы!');
+  } else {
+    const response = await fetch('/auth/authorize', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formNewData),
+    });
+
+    if (response.status === 200) {
+      window.location.replace('/');
+    } else if (response.status === 201) {
+      alert('Не верно указаны логин или пароль!');
+      window.location.replace('/auth');
     }
   }
 });

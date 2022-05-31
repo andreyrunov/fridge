@@ -1,3 +1,5 @@
+const bcrypt = require('bcrypt');
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     /**
@@ -9,24 +11,26 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
+
+    const pass = bcrypt.hashSync('123', 10);
     await queryInterface.bulkInsert('Users', [{
       name: 'John Doe',
       login: '123@mail.ru',
-      pass: '123',
+      pass,
       isAdmin: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       name: 'Ivan',
       login: '123@bk.ru',
-      pass: '123',
+      pass,
       isAdmin: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       name: 'Andrey',
       login: '1@mail.ru',
-      pass: '123',
+      pass,
       isAdmin: true,
       createdAt: new Date(),
       updatedAt: new Date(),

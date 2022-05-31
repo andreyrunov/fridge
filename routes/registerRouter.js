@@ -1,6 +1,9 @@
 require('dotenv').config();
-const { User } = require('../db/models');
+const bcrypt = require('bcrypt');
 const router = require('express').Router();
+const { User } = require('../db/models');
+
+const saltRounds = 5;
 
 router.route('/')
   .get((req, res) => {
@@ -21,10 +24,16 @@ router.route('/addNewUser')
     if (user) {
       return res.sendStatus(201);
     }
-    await User.create({
-      name, login, pass, isAdmin: false,
-    });
-    res.sendStatus(200);
+    try {
+      const encryptPass = bcrypt.hashSync(pass, saltRounds);
+
+      await User.create({
+        name, login, pass: encryptPass, isAdmin: false,
+      });
+      res.sendStatus(200);
+    } catch (err) {
+      console.log(err);
+    }
 
     // console.log(name, login, pass, isAdmin);
     /* console.log(users);

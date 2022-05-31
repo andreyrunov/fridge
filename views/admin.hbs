@@ -1,0 +1,85 @@
+<h1>Мои товары</h1>
+<div class="container-block">
+  <div class="categories">
+    <div class="categories-wrapper">
+      <nav class="nav flex-column width200">
+        <h3>Добавить товар</h3>
+        <form action="/addItem" name="addForm">
+          <div class="input-wrapper">
+            <div class="input">
+              <label for="title-input" class="block mar-b-1 title-input mt-3">Название</label>
+              <input id="title-input" maxlength="20" name="name" type="text" tabindex="1" class="block w-100 ">
+            </div>
+            <div class="input">
+              <label for="title-input" class="block mar-b-1 mt-3">Фото (url)</label>
+              <input id="title-input" name="photo" type="text" tabindex="2" class="block w-100 ">
+            </div>
+          </div>
+          <button type="submit" id="add" class="btn btn-primary mt-4">Добавить</button>
+        </form>
+      </nav>
+    </div>
+  </div>
+  <div class="item-list">
+    <div class="items-list-wrapper">
+      {{#each allItems}}
+        <div class="card mt-4" id="card-{{this.id}}" data-id="{{this.id}}" style="width: 18rem;">
+          <div class="img-wrapper">
+            <img src="{{this.img}}" class="card-img-top" alt="">
+          </div>
+          <div class="card-body">
+            <div class="title-wrapper">
+              <h5 class="card-title">{{this.name}}</h5>
+            </div>
+            <div class="form-wrapper">
+              <div class="modal-btn-wrapper">
+                <!-- Кнопка и модалка для редактирования аккаунта -->
+                <div class="container-modal">
+                  <div id="{{this.id}}">
+                    <button id="{{this.id}}" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editormodal{{this.id}} " aria-hidden="true">
+                      Редактировать
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="editormodal{{this.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Редактировать товар</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            <div>
+                              <div>
+                                <form class="editForm-{{this.id}}" method="post">
+                                  <input class="changeInput" type="text" name="name"
+                                    placeholder="Название товара">
+                                  <input class="changeInput" type="text" name="photo"  placeholder="Фото (url)"><br>
+                                  <button type="submit" class="creator btn btn-primary mt-2" data-id="{{this.id}}" id="saveChanges">Сохранить изменения</button>
+                                  <button type="button" class="btn btn-secondary mt-2" data-bs-dismiss="modal">Закрыть</button>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Modal -->
+                  </div>
+                </div>
+              </div>
+              <div class="delete-btn-wrapper">
+                <form action="/admin/delete/{{this.id}}" method="post">
+                  <button type="submit" data-id="{{this.id}}" id="{{this.id}}" class="btn btn-primary btn-to-get-by-class">Удалить</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>
+
+
+

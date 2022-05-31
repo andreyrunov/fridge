@@ -4,7 +4,7 @@ const express = require('express');
 const morgan = require('morgan');
 const hbs = require('hbs');
 const path = require('path');
-const indexRouter = require('./routes/indexRouter');
+const adminRouter = require('./routes/adminRouter');
 const authRouter = require('./routes/authRouter');
 const registerRouter = require('./routes/registerRouter');
 
@@ -19,7 +19,8 @@ app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use('/', indexRouter);
+
+app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 app.use('/register', registerRouter);
 

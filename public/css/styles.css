@@ -5,6 +5,10 @@ h1 {
   margin: 15px;
 }
 
+h3 {
+  margin: 15px 0px 0px 0px;
+}
+
 .navbar {
   background-color: white;
 }
@@ -12,6 +16,7 @@ h1 {
 .container {
   display: flex;
   flex-direction: column;
+  
 }
 
 .container-block {
@@ -71,6 +76,17 @@ h1 {
   
 }
 
+.delete-btn-wrapper {
+  margin-left: 15px;
+}
+
+.changeInput {
+  margin: 10px 0px;
+}
+
+.creator {
+  margin-right: 10px;
+}
 @media (min-width: 768px) and (max-width: 1400px) {
  /*  .inputs {
     flex-direction: column;

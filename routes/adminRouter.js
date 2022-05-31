@@ -9,7 +9,7 @@ router.route('/')
     const allItems = await Item.findAll({ where: { user_id: userId }, raw: true });
     // console.log(allItems);
 
-    res.render('index', { allItems });
+    res.render('admin', { allItems });
   });
 
 router.route('/addItem')
@@ -35,6 +35,16 @@ router.route('/delete/:id')
   .delete(async (req, res) => {
     await Item.destroy({ where: { id: req.params.id } });
     res.sendStatus('200');
+  });
+
+router.route('/update/:id')
+  .put(async (req, res) => {
+    const resp = req.body;
+    console.log(resp);
+    console.log(req.params.id);
+
+    await Item.update({ name: req.body.name, img: req.body.photo }, { where: { id: req.params.id } });
+    res.sendStatus(200);
   });
 
 module.exports = router;

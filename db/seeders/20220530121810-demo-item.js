@@ -17,13 +17,13 @@ module.exports = {
       updatedAt: new Date(),
     }, {
       name: 'Огурцы',
-      img: 'https://w7.pngwing.com/pngs/487/795/png-transparent-armenian-cucumber-vegetable-fruit-cucumber-slices-and-cucumber-natural-foods-leaf-vegetable-food.png',
+      img: 'https://da-mart.ru/storage/catalog/goods/324cef16d0893e1b3ab39bccba6cac9c.w700h700.jpg',
       user_id: '1',
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       name: 'Помидоры',
-      img: 'https://e7.pngegg.com/pngimages/273/923/png-clipart-cherry-tomato-tomato-soup-high-definition-television-tomato-natural-foods-food.png',
+      img: 'https://catherineasquithgallery.com/uploads/posts/2021-03/1614570782_26-p-pomidor-na-belom-fone-33.jpg',
       user_id: '1',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -35,13 +35,13 @@ module.exports = {
       updatedAt: new Date(),
     }, {
       name: 'Огурцы',
-      img: 'https://w7.pngwing.com/pngs/487/795/png-transparent-armenian-cucumber-vegetable-fruit-cucumber-slices-and-cucumber-natural-foods-leaf-vegetable-food.png',
+      img: 'https://da-mart.ru/storage/catalog/goods/324cef16d0893e1b3ab39bccba6cac9c.w700h700.jpg',
       user_id: '2',
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       name: 'Помидоры',
-      img: 'https://e7.pngegg.com/pngimages/273/923/png-clipart-cherry-tomato-tomato-soup-high-definition-television-tomato-natural-foods-food.png',
+      img: 'https://catherineasquithgallery.com/uploads/posts/2021-03/1614570782_26-p-pomidor-na-belom-fone-33.jpg',
       user_id: '2',
       createdAt: new Date(),
       updatedAt: new Date(),
@@ -53,13 +53,13 @@ module.exports = {
       updatedAt: new Date(),
     }, {
       name: 'Огурцы',
-      img: 'https://w7.pngwing.com/pngs/487/795/png-transparent-armenian-cucumber-vegetable-fruit-cucumber-slices-and-cucumber-natural-foods-leaf-vegetable-food.png',
+      img: 'https://da-mart.ru/storage/catalog/goods/324cef16d0893e1b3ab39bccba6cac9c.w700h700.jpg',
       user_id: '3',
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
       name: 'Помидоры',
-      img: 'https://e7.pngegg.com/pngimages/273/923/png-clipart-cherry-tomato-tomato-soup-high-definition-television-tomato-natural-foods-food.png',
+      img: 'https://catherineasquithgallery.com/uploads/posts/2021-03/1614570782_26-p-pomidor-na-belom-fone-33.jpg',
       user_id: '3',
       createdAt: new Date(),
       updatedAt: new Date(),

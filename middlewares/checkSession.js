@@ -7,6 +7,6 @@ module.exports = function (req, res, next) {
       isAdmin: req.session.isAdmin,
     };
     return next();
-  } 
+  }
   next();
 };
